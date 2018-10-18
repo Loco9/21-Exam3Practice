@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  SEQUENCES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Logan Cody.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -35,9 +35,9 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_practice_problem4a()
-    run_test_practice_problem4b()
-    run_test_practice_problem4c()
+    # run_test_practice_problem4a()
+    # run_test_practice_problem4b()
+    # run_test_practice_problem4c()
     run_test_practice_problem4d()
 
 
@@ -134,7 +134,7 @@ def practice_problem4a(sequence):
       :type sequence: list | tuple | string
     """
     ####################################################################
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -142,6 +142,12 @@ def practice_problem4a(sequence):
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
 
+    new = []
+    for k in range(len(sequence) - 1):
+
+        if sequence[k] == sequence[k + 1]:
+            new = new + [k]
+    return new
 
 def run_test_practice_problem4b():
     """ Tests the    practice_problem4b    function. """
@@ -197,7 +203,7 @@ def practice_problem4b(sequence):
       :type sequence: (list | tuple) of (float | int)
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -205,6 +211,12 @@ def practice_problem4b(sequence):
     #    TIME ESTIMATE:   10 minutes.
     ####################################################################
 
+    largest = 0
+    for k in range(0, len(sequence), 2):
+        if sequence[k] > sequence[largest]:
+            largest = k
+
+    return sequence[largest]
 
 def run_test_practice_problem4c():
     """ Tests the    practice_problem4c    function. """
@@ -295,7 +307,7 @@ def practice_problem4c(points):
       :rtype: rg.Point | string
     """
     ####################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPORTANT: This problem is your LOWEST PRIORITY for preparing
@@ -307,6 +319,18 @@ def practice_problem4c(points):
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
 
+    count = 0
+    for i in range(len(points)):
+        point1 = points[i]
+        count = count + 1
+        if is_prime(point1.x) and is_prime(point1.y):
+            j = point1.x
+            point1.x = point1.y
+            point1.y = j
+            return rg.Point(point1.x, point1.y)
+
+    if count == len(points):
+        return 'Not found'
 
 def run_test_practice_problem4d():
     """ Tests the    practice_problem4d    function. """
@@ -399,6 +423,11 @@ def practice_problem4d(sequence):
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
 
+    total = 0
+    for k in range(1, len(sequence)):
+        if is_prime(sequence[k - 1]):
+            total = total + sequence[k - 1]
+    return total
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
