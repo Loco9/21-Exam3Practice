@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  MUTATING  and  RETURNING-NEW  LISTS.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Logan Cody.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -37,7 +37,7 @@ def main():
 def run_test_doubler():
     """ Tests the    doubler    function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  doubler  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     #
@@ -83,6 +83,28 @@ def run_test_doubler():
     # TO DO 2 (continued): Add your ADDITIONAL test(s) here:
     # ------------------------------------------------------------------
 
+    # Test 2
+    list1 = [-3, 50, 4]
+    list2 = [1, 2, 0, 5]
+    correct_list1 = [-6, 100, 8]
+    correct_list2 = [1, 2, 0, 5]
+    expected = [2, 4, 0, 10]
+
+    print()
+    print('Before Function:')
+    print('  list1:', list1)
+    print('  list2:', list2)
+
+    actual = doubler(list1, list2)
+
+    print('After Function is called')
+    print('  Argument 1 is:       ', list1)
+    print('  Argument 1 should be:', correct_list1)
+    print('  Argument 2 is:       ', list2)
+    print('  Argument 2 should be:', correct_list2)
+    print('The returned value is:       ', actual)
+    print('The returned value should be:', expected)
+
 
 def doubler(list1, list2):
     """
@@ -111,6 +133,13 @@ def doubler(list1, list2):
     #    TIME ESTIMATE:   5 minutes.
     # ------------------------------------------------------------------
 
+    for i in range(len(list1)):
+        list1[i] = list1[i] * 2
+
+    new = []
+    for j in range(len(list2)):
+        new = new + [list2[j] * 2]
+    return new
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
