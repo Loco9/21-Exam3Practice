@@ -33,7 +33,7 @@ import math
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    # run_test_hourglass()
+    run_test_hourglass()
     run_test_many_hourglasses()
 
 
@@ -225,6 +225,8 @@ def many_hourglasses(window, square, m, colors):
     hourglass(window, 1, square.center, square.length_of_each_side / 2, colors[0])
 
     new = []
+    for k in range(len(colors)):
+        new = new + [colors[k]]
     for k in range(len(colors)):
         new = new + [colors[k]]
     for k in range(len(colors)):
