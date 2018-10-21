@@ -224,18 +224,32 @@ def many_hourglasses(window, square, m, colors):
     square.attach_to(window)
     hourglass(window, 1, square.center, square.length_of_each_side / 2, colors[0])
 
-    colors_new = []
+    new = []
     for k in range(len(colors)):
-        colors_new = colors_new + [colors[k]]
-    c = 0
+        new = new + [colors[k]]
+    for k in range(len(colors)):
+        new = new + [colors[k]]
+    for k in range(len(colors)):
+        new = new + [colors[k]]
+
+    radius = square.length_of_each_side / 2
+    diameter = radius * 2
+    c = 3
+    x = square.center.x
+    d = math.sqrt((diameter ** 2) - (radius ** 2))
     for i in range(m - 1):
-        if i >= len(colors) - 1:
-            a = c
-        else:
-            a = i
-        hourglass(window, i + 2, rg.Point(square.center.x * (i + 3), square.center.y),
-                  square.length_of_each_side / 2, colors_new[a + 1])
-        c = c + 1
+        x = x + (c * radius)
+        n = i + 2
+        hourglass(window, n, rg.Point(x, square.center.y),
+                  square.length_of_each_side / 2, new[i + 1])
+        x1 = x - (radius * n)
+        x2 = x + (radius * n)
+        y1 = square.center.y - ((n - 1) * d + radius)
+        y2 = square.center.y + ((n - 1) * d + radius)
+        rectangle1 = rg.Rectangle(rg.Point(x1, y1), rg.Point(x2, y2))
+        rectangle1.attach_to(window)
+        c = c + 2
+
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
